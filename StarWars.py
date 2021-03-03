@@ -5,24 +5,24 @@ import time
 
 def fel():
     ypozicio = urhajo.ycor()
-    ypozicio += 10
+    ypozicio += 20
     urhajo.sety(ypozicio)
 
 def le():
     ypozicio = urhajo.ycor()
-    ypozicio -= 10
+    ypozicio -= 20
     urhajo.sety(ypozicio)
 
 
 def jobbra():
     xpozicio = urhajo.xcor()
-    xpozicio += 10
+    xpozicio += 20
     urhajo.setx(xpozicio)
 
 
 def balra():
     xpozicio = urhajo.xcor()
-    xpozicio -= 10
+    xpozicio -= 20
     urhajo.setx(xpozicio)
 
 
@@ -30,16 +30,29 @@ space = turtle.Screen()
 space.setup(width=800, height=600)
 space.bgpic("hatter.png")
 space.addshape("sprite.gif")
+space.addshape("meteor2.gif")
 space.tracer(0)
 space.listen()
-space.onkey(fel, "Up")
-space.onkey(le, "Down")
-space.onkey(balra, "Left")
-space.onkey(jobbra, "Right")
+space.onkeypress(fel, "Up")
+space.onkeypress(le, "Down")
+space.onkeypress(balra, "Left")
+space.onkeypress(jobbra, "Right")
 
 urhajo = turtle.Turtle()
 urhajo.shape("sprite.gif")
 urhajo.penup()
+
+meteor_jobbrol = turtle.Turtle()
+meteor_jobbrol.shape("meteor2.gif")
+meteor_jobbrol.penup()
+
+meteor_jobbrol.setx(400)
+while meteor_jobbrol.xcor()>-400:
+    space.update()
+    time.sleep(0.1)
+    meteor_mozgas = meteor_jobbrol.xcor()
+    meteor_mozgas -= 10
+    meteor_jobbrol.setx(meteor_mozgas)
 
 while True:
     space.update()
