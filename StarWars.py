@@ -1,7 +1,11 @@
 import turtle
 import random
 import time
+from random import randint
+from random import seed
 
+for _ in range(1):
+    value = randint(-300, 300)
 
 def fel():
     ypozicio = urhajo.ycor()
@@ -47,6 +51,8 @@ meteor_jobbrol.shape("meteor2.gif")
 meteor_jobbrol.penup()
 
 meteor_jobbrol.setx(400)
+meteor_jobbrol.sety(value)
+
 while meteor_jobbrol.xcor()>-400:
     space.update()
     time.sleep(0.1)
