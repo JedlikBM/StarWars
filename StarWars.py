@@ -53,12 +53,28 @@ meteor_jobbrol.penup()
 meteor_jobbrol.setx(400)
 meteor_jobbrol.sety(value)
 
+
 while meteor_jobbrol.xcor()>-400:
     space.update()
     time.sleep(0.1)
     meteor_mozgas = meteor_jobbrol.xcor()
     meteor_mozgas -= 10
     meteor_jobbrol.setx(meteor_mozgas)
+
+while meteor_jobbrol.xcor()==-400:
+    for _ in range(1):
+        value = randint(-300, 300)
+    meteor_jobbrol.setx(400)
+    meteor_jobbrol.sety(value)
+    while meteor_jobbrol.xcor() > -400:
+        space.update()
+        time.sleep(0.1)
+        meteor_mozgas = meteor_jobbrol.xcor()
+        meteor_mozgas -= 10
+        meteor_jobbrol.setx(meteor_mozgas)
+
+
+
 
 while True:
     space.update()
