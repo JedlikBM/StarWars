@@ -82,14 +82,14 @@ while meteor_jobbrol.xcor() <= -400:
         meteor_mozgas -= 50
         meteor_jobbrol.setx(meteor_mozgas)
 
-while True:
-    space.update()
-    time.sleep(0.2)
-    if urhajo.ycor() > 300:
-        urhajo.sety(-300)
-    if urhajo.ycor() < -300:
-        urhajo.sety(300)
-    if urhajo.xcor() > 400:
-        urhajo.setx(-400)
-    if urhajo.xcor() < -400:
-        urhajo.setx(400)
+    while True:
+        space.update()
+        time.sleep(0.2)
+        if urhajo.ycor() > 300:
+            urhajo.sety(-300)
+        if urhajo.ycor() < -300:
+            urhajo.sety(300)
+        if urhajo.xcor() > 400:
+            urhajo.setx(-400)
+        if urhajo.xcor() < -400:
+            urhajo.setx(400)
