@@ -7,10 +7,12 @@ from random import seed
 for _ in range(1):
     value = randint(-300, 300)
 
+
 def fel():
     ypozicio = urhajo.ycor()
     ypozicio += 20
     urhajo.sety(ypozicio)
+
 
 def le():
     ypozicio = urhajo.ycor()
@@ -29,6 +31,9 @@ def balra():
     xpozicio -= 20
     urhajo.setx(xpozicio)
 
+
+kijelzo = turtle.Turtle()
+kijelzo.hideturtle()
 
 space = turtle.Screen()
 space.setup(width=800, height=600)
@@ -53,15 +58,19 @@ meteor_jobbrol.penup()
 meteor_jobbrol.setx(400)
 meteor_jobbrol.sety(value)
 
+szamlalo = 0
 
-while meteor_jobbrol.xcor()>-400:
+while meteor_jobbrol.xcor() > -400:
     space.update()
     time.sleep(0.1)
     meteor_mozgas = meteor_jobbrol.xcor()
-    meteor_mozgas -= 10
+    meteor_mozgas -= 50
     meteor_jobbrol.setx(meteor_mozgas)
 
-while meteor_jobbrol.xcor()==-400:
+while meteor_jobbrol.xcor() <= -400:
+    szamlalo += 1
+    kijelzo.clear()
+    kijelzo.write(szamlalo, align="center", font=("Arial", 30, "bold"))
     for _ in range(1):
         value = randint(-300, 300)
     meteor_jobbrol.setx(400)
@@ -70,11 +79,8 @@ while meteor_jobbrol.xcor()==-400:
         space.update()
         time.sleep(0.1)
         meteor_mozgas = meteor_jobbrol.xcor()
-        meteor_mozgas -= 10
+        meteor_mozgas -= 50
         meteor_jobbrol.setx(meteor_mozgas)
-
-
-
 
 while True:
     space.update()
