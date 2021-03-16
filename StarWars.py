@@ -1,12 +1,7 @@
 import turtle
-import random
 import time
 from random import randint
-from random import seed
 import array as arr
-
-for _ in range(1):
-    value = randint(-15, 15)
 
 
 def fel():
@@ -35,6 +30,7 @@ def balra():
 
 kijelzo = turtle.Turtle()
 kijelzo.hideturtle()
+kijelzo.color("white")
 
 space = turtle.Screen()
 space.setup(width=800, height=600)
@@ -65,47 +61,25 @@ eletjelzo.sety(230)
 eletjelzo.write("❤ 3", align="left", font=("Arial", 30, "bold"))
 
 meteor_jobbrol.setx(400)
-meteor_jobbrol.sety(value * 20)
+meteor_jobbrol.sety(randint(-15, 15) * 20)
 
 szamlalo = 0
 robbanas_szamlalo = 0
 tureshatarok = arr.array('i', [-60, -40, -20, 0, 20, 40, 60])
 
-while meteor_jobbrol.xcor() > -400:
-    space.update()
-    time.sleep(0.1)
-    for t in tureshatarok:
-        if urhajo.xcor() == meteor_jobbrol.xcor() - 60 and urhajo.ycor() == meteor_jobbrol.ycor()+t:
-            robbanas_szamlalo += 1
-            meteor_jobbrol.setx(-450)
-            szamlalo -= 1
-            eletjelzo.clear()
-            eletjelzo.write(f'❤ {3 - robbanas_szamlalo}', align="left", font=("Arial", 30, "bold"))
-    if urhajo.ycor() > 300:
-        urhajo.sety(-300)
-    if urhajo.ycor() < -300:
-        urhajo.sety(300)
-    if urhajo.xcor() > 400:
-        urhajo.setx(-400)
-    if urhajo.xcor() < -400:
-        urhajo.setx(400)
-    meteor_mozgas = meteor_jobbrol.xcor()
-    meteor_mozgas -= 20
-    meteor_jobbrol.setx(meteor_mozgas)
-
-while meteor_jobbrol.xcor() <= -400:
-    szamlalo += 1
-    kijelzo.clear()
-    kijelzo.write(szamlalo, align="center", font=("Arial", 30, "bold"))
-    for _ in range(1):
-        value = randint(-15, 15)
-    meteor_jobbrol.setx(400)
-    meteor_jobbrol.sety(value * 20)
+while True:
+    while meteor_jobbrol.xcor() <= -400:
+        szamlalo += 1
+        kijelzo.clear()
+        kijelzo.write(szamlalo, align="center", font=("Arial", 36, "bold"))
+        randomszam = randint(-15, 15)
+        meteor_jobbrol.setx(400)
+        meteor_jobbrol.sety(randomszam * 20)
     while meteor_jobbrol.xcor() > -400 and robbanas_szamlalo != 3:
         space.update()
-        time.sleep(0.1)
+        time.sleep(0.04)
         for t in tureshatarok:
-            if urhajo.xcor() == meteor_jobbrol.xcor()-60 and urhajo.ycor() == meteor_jobbrol.ycor()+t:
+            if urhajo.xcor() == meteor_jobbrol.xcor() - 60 and urhajo.ycor() == meteor_jobbrol.ycor() + t:
                 robbanas_szamlalo += 1
                 meteor_jobbrol.setx(-450)
                 szamlalo -= 1
@@ -129,7 +103,6 @@ while meteor_jobbrol.xcor() <= -400:
         urhajo.clear()
         space.bgcolor("black")
         while True:
-            kijelzo.color("white")
-            kijelzo.write(f'MEGHALTÁL! PONTSZÁM: {szamlalo + 1}', align="center", font=("Arial", 30, "bold"))
+            kijelzo.write(f'MEGHALTÁL! \nPONTSZÁM: {szamlalo + 1}', align="center", font=("Arial", 30, "bold"))
 
 # CREATED BY VIKI, PATRIK & MARTIN
