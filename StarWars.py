@@ -3,6 +3,7 @@ import random
 import time
 from random import randint
 from random import seed
+import array as arr
 
 for _ in range(1):
     value = randint(-15, 15)
@@ -68,16 +69,18 @@ meteor_jobbrol.sety(value * 20)
 
 szamlalo = 0
 robbanas_szamlalo = 0
+tureshatarok = arr.array('i', [-60, -40, -20, 0, 20, 40, 60])
 
 while meteor_jobbrol.xcor() > -400:
     space.update()
     time.sleep(0.1)
-    if urhajo.xcor() == meteor_jobbrol.xcor()-60 and urhajo.ycor() == meteor_jobbrol.ycor():
-        robbanas_szamlalo += 1
-        meteor_jobbrol.setx(-450)
-        szamlalo -= 1
-        eletjelzo.clear()
-        eletjelzo.write(f'❤ {3 - robbanas_szamlalo}', align="left", font=("Arial", 30, "bold"))
+    for t in tureshatarok:
+        if urhajo.xcor() == meteor_jobbrol.xcor() - 60 and urhajo.ycor() == meteor_jobbrol.ycor()+t:
+            robbanas_szamlalo += 1
+            meteor_jobbrol.setx(-450)
+            szamlalo -= 1
+            eletjelzo.clear()
+            eletjelzo.write(f'❤ {3 - robbanas_szamlalo}', align="left", font=("Arial", 30, "bold"))
     if urhajo.ycor() > 300:
         urhajo.sety(-300)
     if urhajo.ycor() < -300:
@@ -101,12 +104,13 @@ while meteor_jobbrol.xcor() <= -400:
     while meteor_jobbrol.xcor() > -400 and robbanas_szamlalo != 3:
         space.update()
         time.sleep(0.1)
-        if urhajo.xcor() == meteor_jobbrol.xcor()-60 and urhajo.ycor() == meteor_jobbrol.ycor():
-            robbanas_szamlalo += 1
-            meteor_jobbrol.setx(-450)
-            szamlalo -= 1
-            eletjelzo.clear()
-            eletjelzo.write(f'❤ {3 - robbanas_szamlalo}', align="left", font=("Arial", 30, "bold"))
+        for t in tureshatarok:
+            if urhajo.xcor() == meteor_jobbrol.xcor()-60 and urhajo.ycor() == meteor_jobbrol.ycor()+t:
+                robbanas_szamlalo += 1
+                meteor_jobbrol.setx(-450)
+                szamlalo -= 1
+                eletjelzo.clear()
+                eletjelzo.write(f'❤ {3 - robbanas_szamlalo}', align="left", font=("Arial", 30, "bold"))
         if urhajo.ycor() > 300:
             urhajo.sety(-300)
         if urhajo.ycor() < -300:
