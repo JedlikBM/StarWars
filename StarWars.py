@@ -127,4 +127,5 @@ while meteor_jobbrol.xcor() <= -400:
         while True:
             kijelzo.color("white")
             kijelzo.write(f'MEGHALTÁL! PONTSZÁM: {szamlalo + 1}', align="center", font=("Arial", 30, "bold"))
+
 # CREATED BY VIKI, PATRIK & MARTIN
