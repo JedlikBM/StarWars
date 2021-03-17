@@ -27,6 +27,10 @@ def balra():
     xpozicio -= 20
     urhajo.setx(xpozicio)
 
+def loves():
+    laser.sety(urhajo.ycor())
+    laser.setx(urhajo.xcor())
+
 
 kijelzo = turtle.Turtle()
 kijelzo.hideturtle()
@@ -37,12 +41,14 @@ space.setup(width=800, height=600)
 space.bgpic("hatter.png")
 space.addshape("sprite.gif")
 space.addshape("meteor2.gif")
+space.addshape("laser.gif")
 space.tracer(0)
 space.listen()
 space.onkeypress(fel, "Up")
 space.onkeypress(le, "Down")
 space.onkeypress(balra, "Left")
 space.onkeypress(jobbra, "Right")
+space.onkey(loves, "Control_L")
 
 urhajo = turtle.Turtle()
 urhajo.shape("sprite.gif")
@@ -51,6 +57,10 @@ urhajo.penup()
 meteor_jobbrol = turtle.Turtle()
 meteor_jobbrol.shape("meteor2.gif")
 meteor_jobbrol.penup()
+
+laser = turtle.Turtle()
+laser.shape("laser.gif")
+laser.penup()
 
 eletjelzo = turtle.Turtle()
 eletjelzo.hideturtle()
@@ -61,6 +71,7 @@ eletjelzo.sety(230)
 eletjelzo.write("❤ 3", align="left", font=("Arial", 30, "bold"))
 
 meteor_jobbrol.setx(400)
+laser.setx(500)
 meteor_jobbrol.sety(randint(-15, 15) * 20)
 
 szamlalo = 0
@@ -77,14 +88,18 @@ while True:
         meteor_jobbrol.sety(randomszam * 20)
     while meteor_jobbrol.xcor() > -400 and robbanas_szamlalo != 3:
         space.update()
-        time.sleep(0.04)
+        time.sleep(0.2) #SEBESSÉG SZERKESZTÉSE
         for t in tureshatarok:
-            if urhajo.xcor() == meteor_jobbrol.xcor() - 60 and urhajo.ycor() == meteor_jobbrol.ycor() + t:
+            if urhajo.xcor()+60 == meteor_jobbrol.xcor() and urhajo.ycor() == meteor_jobbrol.ycor() + t:
                 robbanas_szamlalo += 1
                 meteor_jobbrol.setx(-450)
                 szamlalo -= 1
                 eletjelzo.clear()
                 eletjelzo.write(f'❤ {3 - robbanas_szamlalo}', align="left", font=("Arial", 30, "bold"))
+        for tlaser in tureshatarok:
+            while laser.xcor() == meteor_jobbrol.xcor()-80 and laser.ycor() == meteor_jobbrol.ycor()+tlaser:
+                meteor_jobbrol.setx(-450)
+                laser.setx(450)
         if urhajo.ycor() > 300:
             urhajo.sety(-300)
         if urhajo.ycor() < -300:
@@ -93,9 +108,14 @@ while True:
             urhajo.setx(-400)
         if urhajo.xcor() < -400:
             urhajo.setx(400)
+        laser_mozgas = laser.xcor()
+        laser_mozgas += 20
+        laser.setx(laser_mozgas)
         meteor_mozgas = meteor_jobbrol.xcor()
         meteor_mozgas -= 20
         meteor_jobbrol.setx(meteor_mozgas)
+
+
     if robbanas_szamlalo == 3:
         space.clear()
         kijelzo.clear()
