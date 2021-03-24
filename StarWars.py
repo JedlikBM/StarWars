@@ -114,13 +114,13 @@ while True:
         meteor_mozgas -= 20
         meteor_jobbrol.setx(meteor_mozgas)
         for t in tureshatarok:
-            if urhajo.xcor() + 60 == meteor_jobbrol.xcor() and urhajo.ycor() == meteor_jobbrol.ycor() + t:
+            if urhajo.xcor() + 60 == meteor_jobbrol.xcor() and urhajo.ycor() - 20 == meteor_jobbrol.ycor() + t:
                 elet_szamlalo += 1
                 meteor_jobbrol.setx(-450)
                 szamlalo -= 1
                 eletjelzo.clear()
                 eletjelzo.write(f'❤ {3 - elet_szamlalo}', align="left", font=("Arial", 30, "bold"))
-            if laser.xcor()+80 == meteor_jobbrol.xcor() and laser.ycor() == meteor_jobbrol.ycor() + t:
+            if laser.xcor() + 80 == meteor_jobbrol.xcor() and laser.ycor() - 20 == meteor_jobbrol.ycor() + t or laser.xcor() + 60 == meteor_jobbrol.xcor() and laser.ycor() == meteor_jobbrol.ycor() + t:
                 robbanas_gif.setx(meteor_jobbrol.xcor())
                 robbanas_gif.sety(meteor_jobbrol.ycor())
                 meteor_jobbrol.setx(-450)
