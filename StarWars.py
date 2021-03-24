@@ -89,17 +89,13 @@ laser.setx(500)
 robbanas_gif.setx(500)
 meteor_jobbrol.sety(randint(-15, 15) * 20)
 
-szamlalo = 0
 elet_szamlalo = 0
 felrobb_meteor_szamlalo = 0  # A FELROBBANT METEOROK SZÁMLÁLÓJA
 tureshatarok = arr.array('i', [-60, -40, -20, 0, 20, 40, 60])
 
 while True:
-
     while meteor_jobbrol.xcor() <= -400:
-        szamlalo += 1
         kijelzo.clear()
-        kijelzo.write(szamlalo, align="center", font=("Arial", 36, "bold"))
         randomszam = randint(-15, 15)
         meteor_jobbrol.setx(400)
         meteor_jobbrol.sety(randomszam * 20)
